@@ -1,0 +1,29 @@
+services:
+  trac:
+    build: ./docker/trac
+    ports:
+      - "8000:8000"
+    environment:
+      - TRAC_ENV=/var/trac
+      - TRAC_PROJECT_NAME=MyProject
+      - DB_URL=postgres://tracuser:tracpassword@postgres:5432/tracdb
+      - TRAC_ADMIN_USER=admin
+      - TRAC_ADMIN_PASS=admin
+    volumes:
+      - ./trac-data:/var/trac
+      - ./plugins:/deploy/plugins
+      - ./requirements.txt:/deploy/requirements.txt
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      - POSTGRES_USER=tracuser
+      - POSTGRES_PASSWORD=tracpassword
+      - POSTGRES_DB=tracdb
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:

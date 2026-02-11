@@ -1,0 +1,3 @@
+# Add Trac plugins here, e.g.
+# TracTags
+# TracAccountManager

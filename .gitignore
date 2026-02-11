@@ -1,0 +1,26 @@
+# Trac data directory (contains database and user data)
+trac-data/
+
+# Plugin directory (can be installed via requirements.txt)
+plugins/
+
+# Environment files with sensitive data
+.env
+
+# Docker volumes
+postgres-data/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
